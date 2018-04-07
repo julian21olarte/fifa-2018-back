@@ -2,7 +2,7 @@
 const teamModel = require('../models/team.model');
 
 function getTeams() {
-  return teamModel.find();
+  return teamModel.find({});
 }
 
 function getTeamsByGroup(group) {

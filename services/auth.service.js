@@ -4,7 +4,7 @@ const firebase = require('firebase-admin');
 
 
 function login(tokenId) {
-  return firebase.auth().verifyIdToken(tokenId)
+  return this.validateToken(tokenId)
   .then(decodedToken => {
     if(decodedToken && decodedToken.uid) {
       return userModel.findOne({tokenId: decodedToken.uid})
@@ -12,12 +12,21 @@ function login(tokenId) {
         if(user) {
           return user;
         }
-        return userModel.create({tokenId: decodedToken.uid});
+        let newUser = {
+          tokenId: decodedToken.uid,
+          isAdmin: decodedToken.uid === 'MJ5p0dwo2ROLQg44KBT14D3cRAG2' ? true : false
+        }
+        return userModel.create(newUser);
       });
     }
   });
 }
 
+function validateToken(tokenId) {
+  return firebase.auth().verifyIdToken(tokenId);
+}
+
 module.exports = {
-  login
+  login,
+  validateToken
 }
