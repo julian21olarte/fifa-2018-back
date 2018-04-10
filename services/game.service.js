@@ -5,6 +5,10 @@ function getAll() {
   return gameModel.find({}).sort({date: 'asc'});;
 }
 
+function getById(id) {
+  return gameModel.findOne({_id: id});
+}
+
 function save(game) {
   return gameModel.create(game);
 }
@@ -27,6 +31,7 @@ function updateGamesExpired() {
 
 module.exports = {
   getAll,
+  getById,
   save,
   updateGamesExpired
 }

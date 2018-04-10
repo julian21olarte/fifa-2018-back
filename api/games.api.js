@@ -11,6 +11,20 @@ function get(req, res) {
   });
 }
 
+function getById(req, res) {
+  let id = req.params.id;
+  gameService.getById(id)
+  .then(game => {
+    if(game) {
+      return res.status(200).send(game);
+    }
+    res.status(404).send({message: 'No existe un partido con ese id'});
+  })
+  .catch(error => {
+    res.status(500).send({message: 'Error al obtener el partido.'});
+  });
+}
+
 function save(req, res){
   let game = req.body.game;
   gameService.save(game)
@@ -28,5 +42,6 @@ function save(req, res){
 
 module.exports = {
   get,
+  getById,
   save
 }

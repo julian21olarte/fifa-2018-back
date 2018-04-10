@@ -5,6 +5,7 @@ const games = require('../api/games.api');
 const authMiddleware = require('../middlewares/auth.middleware');
 
 router.get('/', games.get);
+router.get('/:id', games.getById);
 router.post('/save', authMiddleware.isAdmin, games.save);
 
 module.exports = router;
