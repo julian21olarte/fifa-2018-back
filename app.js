@@ -30,4 +30,7 @@ const server = app.listen(port, () => {
   console.log("Server listening on " + port);
 });
 
+var gameCronjob = require('./cronjobs/game.cronjob');
+//gameCronjob.updateGames.start();
+
 module.exports = app;
