@@ -12,6 +12,7 @@ const app = express();
 const teams = require('./routes/teams.route');
 const auth = require('./routes/auth.route');
 const games = require('./routes/games.route');
+const bets = require('./routes/bets.route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,6 +25,7 @@ app.use(cors({credentials: true, origin: '*'}));
 app.use('/teams', teams);
 app.use('/auth', auth);
 app.use('/games', games);
+app.use('/bets', bets);
 
 // server
 const server = app.listen(port, () => {

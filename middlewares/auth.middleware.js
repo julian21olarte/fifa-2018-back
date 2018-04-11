@@ -21,7 +21,7 @@ function isAdmin(req, res, next) {
   authService.validateToken(tokenId)
   .then(decodedToken => {
     if(decodedToken && decodedToken.uid) {
-      return userModel.find({tokenId: decodedToken.uid})
+      return userModel.findOne({tokenId: decodedToken.uid})
       .then(user => {
         console.log(user);
         if(user) {

@@ -9,7 +9,10 @@ const betSchema = new Schema({
     fee: { type: Number, required: true },
     status: { type: String, required: true, default: 'Pending' },
     typeBet: { type: String, enum: ['Winner', 'Result'], required: true, default: 'Winner' },
-    result: { team1: Number, team2: Number },
+    result: { 
+        team1: {type: Number, required: false, default: null},
+        team2: {type: Number, required: false, default: null} 
+    },
     date: {type: Date, required: true}
 });
 module.exports = mongoose.model('Bet', betSchema);
