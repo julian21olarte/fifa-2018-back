@@ -7,12 +7,14 @@ const port = process.env.PORT || '3000';
 const database = require('./database/database');
 const cors = require('cors');
 
+
 const app = express();
 
 const teams = require('./routes/teams.route');
 const auth = require('./routes/auth.route');
 const games = require('./routes/games.route');
 const bets = require('./routes/bets.route');
+const users = require('./routes/users.route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,6 +28,7 @@ app.use('/teams', teams);
 app.use('/auth', auth);
 app.use('/games', games);
 app.use('/bets', bets);
+app.use('/users', users);
 
 // server
 const server = app.listen(port, () => {

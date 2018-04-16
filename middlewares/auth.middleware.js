@@ -4,6 +4,7 @@ const userModel = require('../models/user.model');
 
 function isUser(req, res, next) {
   let tokenId = req.body.tokenId;
+  console.log(tokenId);
   authService.validateToken(tokenId)
   .then(decodedToken => {
     if(decodedToken && decodedToken.uid) {

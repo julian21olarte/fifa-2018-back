@@ -23,7 +23,7 @@ function save(req, res) {
     res.status(500).send({message: 'Error al crear una nueva apuesta.'});
   })
   .catch(error => {
-    res.status(500).send({message: 'Error en la base de datos al crear una nueva apuesta.'});
+    res.status(500).send({message: 'Error en la base de datos al crear una nueva apuesta.', error});
   });
 }
 

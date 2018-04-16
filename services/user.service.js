@@ -7,6 +7,10 @@ function updateBill(user, bill) {
   return userModel.findOne({_id: user}, {bill});
 }
 
+function getBill(userId) {
+  return userModel.findOne({_id: userId}, {'bill': true, '_id': false});
+}
+
 function getUserByTokenId(tokenId) {
   return authService.validateToken(tokenId)
   .then(decodedToken => {
@@ -26,5 +30,6 @@ function findById(id) {
 module.exports = {
   updateBill,
   getUserByTokenId,
-  findById
+  findById,
+  getBill
 }
