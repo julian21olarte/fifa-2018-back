@@ -4,7 +4,7 @@ const userService = require('../services/user.service');
 const gameService = require('../services/game.service');
 
 function getByUserId(user) {
-  return betModel.find({user});
+  return betModel.find({user}).sort({date: 'asc'}).populate('game');
 }
 
 function save(bet) {

@@ -3,7 +3,7 @@ const gameModel = require('../models/game.model');
 const betService = require('../services/bet.service');
 
 function getAll() {
-  return gameModel.find({}).sort({date: 'asc'});;
+  return gameModel.find({}).sort({date: 'asc'});
 }
 
 function getById(id) {
