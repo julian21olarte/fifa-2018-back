@@ -2,7 +2,20 @@
 const gameModel = require('../models/game.model');
 const betService = require('../services/bet.service');
 
-function getAll() {
+function getAll(userId = null) {
+  if(userId) {
+    return gameModel.find({}).sort({date: 'asc'})
+    .then(games => 
+      Promise.all(games.map(game => 
+        betService.getBetsByUserAndGameId(userId, game._id)
+        .then(bets => {
+          game = game.toObject();
+          game.countUserBets = bets.length;
+          return game;
+        }
+      )))
+    );
+  }
   return gameModel.find({}).sort({date: 'asc'});
 }
 

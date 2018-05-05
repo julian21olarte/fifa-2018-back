@@ -2,9 +2,9 @@
 const gameService = require('../services/game.service.js')
 
 function get(req, res) {
-  gameService.getAll()
+  gameService.getAll(req.query.userId)
   .then(games => {
-    res.status(200).send(games);
+    return res.status(200).send(games);
   })
   .catch(error => {
     res.status(500).send({message: 'Error al obtener los partidos.'});

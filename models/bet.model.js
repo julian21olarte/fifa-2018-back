@@ -13,6 +13,7 @@ const betSchema = new Schema({
         team1: {type: Number, required: false, default: null},
         team2: {type: Number, required: false, default: null} 
     },
-    date: {type: Date, required: true}
+    date: {type: Date, required: true},
+    gain: {type: Number, required: false, default: null}
 });
 module.exports = mongoose.model('Bet', betSchema);
