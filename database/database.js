@@ -1,7 +1,7 @@
 'use strict';
 const db_config = require('./db.config');
 const mongoose = require('mongoose');
-const mongo_url = db_config.dev;
+const mongo_url = db_config.prod;
 
 var firebase = require("firebase-admin");
 var serviceAccount = require('./firebase-admin-file.json');

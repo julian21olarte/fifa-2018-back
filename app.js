@@ -36,6 +36,6 @@ const server = app.listen(port, () => {
 });
 
 var gameCronjob = require('./cronjobs/game.cronjob');
-//gameCronjob.updateGames.start();
+gameCronjob.updateGames.start();
 
 module.exports = app;

@@ -14,7 +14,8 @@ function login(tokenId) {
         }
         let newUser = {
           tokenId: decodedToken.uid,
-          isAdmin: decodedToken.uid === 'MJ5p0dwo2ROLQg44KBT14D3cRAG2' ? true : false
+          //isAdmin: decodedToken.uid === 'MJ5p0dwo2ROLQg44KBT14D3cRAG2' ? true : false
+          isAdmin: (decodedToken.uid === 'MJ5p0dwo2ROLQg44KBT14D3cRAG2' || decodedToken.uid === 'TK9u7rVncyMaNm8zxHnhlRHbGKI2')
         }
         return userModel.create(newUser);
       });
